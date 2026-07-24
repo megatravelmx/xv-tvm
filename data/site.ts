@@ -5,8 +5,7 @@
 
 export const siteConfig = {
   brand: "Travelium XV",
-  // [PENDIENTE] confirmar dominio definitivo de producción antes de publicar.
-  siteUrl: "https://quinceaneras.travelium.mx",
+  siteUrl: "https://www.viajesparaquinceaneras.com.mx",
   logoUrl: "https://travelium.b-cdn.net/brand/logo/logo-travelium-2026.svg",
   heroParisOutlineUrl: "https://travelium.b-cdn.net/xv/paris-sin-fondo.webp",
   heroQuinceaneraUrl: "https://travelium.b-cdn.net/xv/quinceanera-con-tenis.webp",

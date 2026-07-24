@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://quinceaneras.travelium.mx/sitemap.xml
+Sitemap: https://www.viajesparaquinceaneras.com.mx/sitemap.xml
