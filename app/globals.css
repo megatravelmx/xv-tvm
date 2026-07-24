@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-blush text-ink antialiased;
+}
+
+::selection {
+  @apply bg-rose-300 text-navy-950;
+}
+
+.container-page {
+  @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-rose-500 px-6 py-3 text-sm font-semibold text-white shadow-glow transition hover:bg-rose-600 active:scale-[0.98];
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-navy-900 bg-transparent px-6 py-3 text-sm font-semibold text-navy-900 transition hover:bg-navy-900 hover:text-white active:scale-[0.98];
+}
+
+.btn-light {
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-navy-900 shadow-lg transition hover:bg-rose-100 active:scale-[0.98];
+}
+
+.eyebrow {
+  @apply text-xs font-semibold uppercase tracking-[0.2em] text-rose-500;
+}
+
+.section-y {
+  @apply py-16 sm:py-20 lg:py-24;
+}
