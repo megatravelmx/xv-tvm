@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import SectionHeading from "@/components/SectionHeading";
 import ContactForm from "@/components/ContactForm";
 import { siteConfig } from "@/data/site";
+import { IconInstagram, IconTikTok, IconFacebook } from "@/components/icons";
 
 const title = "Contacto";
 const description = "Escríbenos por WhatsApp, correo o agenda una llamada con un ejecutivo para cotizar el viaje de XV años.";
@@ -30,15 +31,72 @@ export default function ContactoPage() {
             <p><span className="font-semibold text-navy-950">Teléfono / WhatsApp:</span> {siteConfig.phone}</p>
             <p><span className="font-semibold text-navy-950">Correo:</span> {siteConfig.contactEmail}</p>
             <p><span className="font-semibold text-navy-950">Horario:</span> {siteConfig.officeHours}</p>
+            <p>
+              <span className="font-semibold text-navy-950">Oficinas:</span> {siteConfig.address.line},{" "}
+              {siteConfig.address.city}, {siteConfig.address.region}
+            </p>
           </div>
 
-          <div className="mt-8 rounded-2xl border border-dashed border-rose-300 bg-rose-100/40 p-5 text-xs text-navy-900/60">
-            Datos de contacto en placeholder — sustituir número de WhatsApp, correo y horario reales
-            en <code>data/site.ts</code> antes de publicar.
+          <div className="mt-8 flex gap-3">
+            <a
+              href={siteConfig.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram de Travelium"
+              className="flex h-11 w-11 items-center justify-center rounded-full bg-rose-100 text-rose-600 transition hover:bg-rose-500 hover:text-white"
+            >
+              <IconInstagram className="h-5 w-5" />
+            </a>
+            <a
+              href={siteConfig.tiktok}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TikTok de Travelium"
+              className="flex h-11 w-11 items-center justify-center rounded-full bg-rose-100 text-rose-600 transition hover:bg-rose-500 hover:text-white"
+            >
+              <IconTikTok className="h-5 w-5" />
+            </a>
+            <a
+              href={siteConfig.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook de Travelium"
+              className="flex h-11 w-11 items-center justify-center rounded-full bg-rose-100 text-rose-600 transition hover:bg-rose-500 hover:text-white"
+            >
+              <IconFacebook className="h-5 w-5" />
+            </a>
           </div>
         </div>
 
         <ContactForm />
+      </div>
+
+      {/* MAPA DE LA OFICINA */}
+      <div className="container-page mt-14">
+        <SectionHeading
+          eyebrow="Nuestras oficinas"
+          title="Así nos encuentras"
+          description={`${siteConfig.address.line}, ${siteConfig.address.city}, ${siteConfig.address.region}.`}
+        />
+        <div className="mt-6 overflow-hidden rounded-3xl border border-rose-100 shadow-sm">
+          <iframe
+            title="Ubicación de las oficinas de Travelium"
+            src={`https://www.google.com/maps?q=${siteConfig.address.lat},${siteConfig.address.lng}&z=16&output=embed`}
+            width="100%"
+            height="380"
+            style={{ border: 0 }}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </div>
+        <a
+          href={siteConfig.address.mapsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-secondary mt-4 inline-flex"
+        >
+          Ver en Google Maps / Cómo llegar
+        </a>
       </div>
     </div>
   );

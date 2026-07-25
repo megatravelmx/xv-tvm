@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Trip } from "@/data/types";
 import PlaceholderImage from "./PlaceholderImage";
+import { flagFromCountryName } from "@/lib/countryFlags";
 
 export default function TripCard({ trip }: { trip: Trip }) {
   return (
@@ -33,7 +34,7 @@ export default function TripCard({ trip }: { trip: Trip }) {
         <div className="mt-4 flex flex-wrap gap-1.5">
           {trip.countries.slice(0, 4).map((c) => (
             <span key={c} className="rounded-full bg-rose-100 px-2.5 py-1 text-[11px] font-semibold text-navy-900">
-              {c}
+              {flagFromCountryName(c)} {c}
             </span>
           ))}
           {trip.countries.length > 4 && (

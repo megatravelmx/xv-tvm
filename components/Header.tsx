@@ -14,12 +14,21 @@ const navLinks = [
   { href: "/preguntas-frecuentes", label: "FAQ" },
 ];
 
-export default function Header() {
+export default function Header({
+  exchangeRate,
+}: {
+  exchangeRate?: { tc: number } | null;
+}) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-rose-100 bg-white/90 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-rose-100 bg-white/90 backdrop-blur print:hidden">
+      {exchangeRate && (
+        <div className="border-b border-blue-100 bg-blue-50 px-4 py-1 text-center text-[11px] font-semibold text-blue-700">
+          Tipo de cambio hoy: 1 USD = ${exchangeRate.tc.toFixed(2)} MXN
+        </div>
+      )}
       <div className="container-page flex h-16 items-center justify-between sm:h-20">
         <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
           {/* eslint-disable-next-line @next/next/no-img-element */}

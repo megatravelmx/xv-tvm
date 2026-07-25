@@ -28,11 +28,11 @@ export const trips: Trip[] = [
     summary:
       "El viaje pensado para vivir la despedida de la infancia acompañada de la persona más importante: mamá. Ocho países, ciudades ícono como Londres, París, Venecia y Roma, y una noche de gala exclusiva en un palacio italiano para celebrar los XV años como verdaderas princesas.",
     highlights: [
-      "Noche de gala en el Palazzo Borghese con máscaras venecianas",
-      "Día completo en Disneyland París con cena y fuegos artificiales",
-      "Ascenso al 2do piso de la Torre Eiffel y crucero por el Sena",
-      "Nieve en el Monte Titlis (Alpes suizos) y adrenalina en Europa-Park",
-      "Guía acompañante de habla hispana durante todo el recorrido",
+      "🎭 Noche de gala en el Palazzo Borghese: baile, música en vivo y máscaras venecianas para una noche inolvidable de madre e hija",
+      "🎇 Día completo en Disneyland París, con cena y fuegos artificiales para cerrar el cuento de hadas",
+      "🗼 Ascenso al 2do piso de la Torre Eiffel y un crucero romántico por el Sena",
+      "❄️ Nieve de verdad en el Monte Titlis (Alpes suizos) y pura adrenalina en Europa-Park",
+      "🇪🇸 Guía acompañante de habla hispana contigo en cada ciudad, cada foto y cada momento",
     ],
     itinerary: [
       { day: "Día 1", title: "México – Madrid", description: "La gran aventura comienza. Presentación en el Aeropuerto Internacional de la Ciudad de México con 5 horas de anticipación para abordar el vuelo trasatlántico con destino a Londres, con escala en una ciudad europea. Disfrutaremos la emoción del viaje y pasaremos la noche a bordo rumbo a Europa." },
@@ -129,12 +129,12 @@ export const trips: Trip[] = [
     summary:
       "El itinerario insignia de Travelium: 26 días, 12 países y 19 ciudades, desde los canales de Ámsterdam hasta el Camp Nou de Barcelona. Incluye 3 chaperonas especializadas en grupos de menores, la cena de gala en el Palazzo Borghese y las entradas a los parques y estadios más buscados por las quinceañeras.",
     highlights: [
-      "3 chaperonas con experiencia en grupos de menores",
-      "Visita a Marken, Volendam y la Casa de Ana Frank en Holanda",
-      "Espectáculo folclórico con cena y crucero nocturno por el Danubio en Budapest",
-      "Museo de la Emperatriz Sisi y Palacio Schönbrunn en Viena",
-      "Excursión en tren a Barcelona con entrada al Camp Nou",
-      "Noche de gala en el Palazzo Borghese con máscaras venecianas",
+      "👩‍🏫 3 chaperonas con experiencia real en grupos de quinceañeras: viajas segura, tu familia viaja tranquila",
+      "🌷 Los pueblitos de postal de Marken y Volendam, y la conmovedora Casa de Ana Frank en Holanda",
+      "🎶🌃 Espectáculo folclórico con cena y crucero nocturno por el Danubio, con Budapest iluminado de fondo",
+      "👑 Los pasos de la Emperatriz Sisi en el Palacio Schönbrunn de Viena",
+      "⚽ Excursión en tren a Barcelona con entrada al mítico Camp Nou",
+      "🎭 Gran noche de gala en el Palazzo Borghese, con máscaras venecianas y pista de baile",
     ],
     itinerary: [
       { day: "Día 1", title: "México – Madrid", description: "Nos reunimos en el Aeropuerto Internacional de la Ciudad de México 5 horas antes de la salida. Embarque en vuelo trasatlántico rumbo a Europa. Noche a bordo." },
@@ -237,11 +237,11 @@ export const trips: Trip[] = [
     summary:
       "La misma ruta ícono por 8 países que enamora a las quinceañeras, pensada para viajar en grupo con amigas: 3 chaperonas con experiencia en grupos de menores, convivencia todos los días y la fiesta de máscaras venecianas en el Palazzo Borghese como cierre inolvidable.",
     highlights: [
-      "3 chaperonas con experiencia en grupos de menores",
-      "Día completo en Disneyland París con cena y fuegos artificiales",
-      "Aventura en Europa Park y nieve en el Monte Titlis",
-      "Noche de gala en el Palazzo Borghese con máscaras venecianas",
-      "Cierre con Estadio Santiago Bernabéu y Parque Warner en Madrid",
+      "👩‍🏫 3 chaperonas con experiencia en grupos de menores: la libertad de viajar con amigas, con la tranquilidad que tu familia necesita",
+      "🎇 Día completo en Disneyland París, cena incluida y fuegos artificiales para cerrar con broche de oro",
+      "❄️🎢 Nieve en el Monte Titlis y adrenalina sin límites en Europa-Park",
+      "🎭 Noche de gala en el Palazzo Borghese, con máscaras venecianas y una fiesta que van a recordar toda la vida",
+      "⚽🎡 Cierre por todo lo alto: Estadio Santiago Bernabéu y Parque Warner en Madrid",
     ],
     itinerary: [
       { day: "Día 1", title: "México – Madrid", description: "La gran aventura comienza. Presentación en el Aeropuerto Internacional de la Ciudad de México con 5 horas de anticipación para abordar el vuelo trasatlántico con destino a Londres, con escala en una ciudad europea. Noche a bordo rumbo a Europa." },

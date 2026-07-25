@@ -3,8 +3,10 @@
 import { useMemo, useState } from "react";
 import { trips, getTripBySlug } from "@/data/trips";
 import { buildWhatsAppLink } from "@/data/site";
+import type { Pricing } from "@/data/types";
 
 type RoomType = "doble" | "triple" | "sencilla";
+type Currency = "USD" | "MXN";
 
 const roomLabels: Record<RoomType, string> = {
   doble: "Doble (2 por habitación)",
@@ -12,22 +14,40 @@ const roomLabels: Record<RoomType, string> = {
   sencilla: "Sencilla (1 por habitación)",
 };
 
-export default function QuoteCalculator({ initialSlug }: { initialSlug?: string }) {
+export default function QuoteCalculator({
+  initialSlug,
+  livePricing = {},
+  tipoCambio = null,
+}: {
+  initialSlug?: string;
+  /** Precios reales tomados en vivo del programa (por slug), cuando el feed
+   * responde correctamente. Si falta un viaje aquí se usa data/trips.ts. */
+  livePricing?: Record<string, Pricing>;
+  /** Tipo de cambio del día (MXN por 1 USD). Null si el feed no respondió. */
+  tipoCambio?: number | null;
+}) {
   const [slug, setSlug] = useState(initialSlug && getTripBySlug(initialSlug) ? initialSlug : trips[0].slug);
   const [roomType, setRoomType] = useState<RoomType>("doble");
   const [pax, setPax] = useState(1);
   const [nombre, setNombre] = useState("");
   const [telefono, setTelefono] = useState("");
+  const [currency, setCurrency] = useState<Currency>("USD");
 
   const trip = getTripBySlug(slug) ?? trips[0];
+  const pricing = livePricing[trip.slug] ?? trip.pricing;
   const salida = trip.salidas[0];
-  const suplemento = trip.pricing.suplementos[0];
+  const suplemento = pricing.suplementos[0];
 
-  const pricePerPerson = useMemo(() => {
-    const base = trip.pricing[roomType];
-    return base + trip.pricing.impuestos + (suplemento?.amount ?? 0);
-  }, [trip, roomType, suplemento]);
+  const fx = currency === "MXN" && tipoCambio ? tipoCambio : 1;
+  const currencyLabel = currency === "MXN" && tipoCambio ? "MXN" : "USD";
+  const convert = (usd: number) => Math.round(usd * fx);
 
+  const pricePerPersonUsd = useMemo(() => {
+    const base = pricing[roomType];
+    return base + pricing.impuestos + (suplemento?.amount ?? 0);
+  }, [pricing, roomType, suplemento]);
+
+  const pricePerPerson = convert(pricePerPersonUsd);
   const total = pricePerPerson * pax;
 
   const message = [
@@ -36,7 +56,7 @@ export default function QuoteCalculator({ initialSlug }: { initialSlug?: string 
     `Salida: ${salida}`,
     `Habitación: ${roomLabels[roomType]}`,
     `Pasajeros: ${pax}`,
-    `Total estimado: $${total.toLocaleString("en-US")} USD`,
+    `Total estimado: $${total.toLocaleString("en-US")} ${currencyLabel}`,
     nombre ? `Nombre: ${nombre}` : "",
     telefono ? `Teléfono: ${telefono}` : "",
   ]
@@ -113,6 +133,36 @@ export default function QuoteCalculator({ initialSlug }: { initialSlug?: string 
             />
           </label>
 
+          <div className="block text-sm font-semibold text-navy-900">
+            Ver monto en
+            <div className="mt-1.5 grid grid-cols-2 gap-2">
+              {(["USD", "MXN"] as Currency[]).map((cur) => (
+                <button
+                  key={cur}
+                  type="button"
+                  onClick={() => setCurrency(cur)}
+                  disabled={cur === "MXN" && !tipoCambio}
+                  className={`rounded-xl border px-2 py-2.5 text-xs font-semibold transition disabled:cursor-not-allowed disabled:opacity-40 ${
+                    currency === cur
+                      ? "border-rose-500 bg-rose-500 text-white"
+                      : "border-rose-200 bg-white text-navy-900 hover:border-rose-300"
+                  }`}
+                >
+                  {cur === "USD" ? "Dólares (USD)" : "Pesos (MXN)"}
+                </button>
+              ))}
+            </div>
+            {tipoCambio ? (
+              <span className="mt-1 block text-xs font-normal text-navy-900/50">
+                Tipo de cambio hoy: 1 USD = ${tipoCambio.toFixed(2)} MXN
+              </span>
+            ) : (
+              <span className="mt-1 block text-xs font-normal text-navy-900/50">
+                Tipo de cambio no disponible en este momento — mostrando USD.
+              </span>
+            )}
+          </div>
+
           <div className="grid gap-4 border-t border-rose-100 pt-5 sm:grid-cols-2">
             <label className="block text-sm font-semibold text-navy-900">
               Tu nombre (opcional)
@@ -145,21 +195,21 @@ export default function QuoteCalculator({ initialSlug }: { initialSlug?: string 
         <dl className="mt-6 space-y-3 text-sm text-navy-900">
           <div className="flex justify-between">
             <dt className="text-navy-900/60">Tarifa {roomLabels[roomType]}</dt>
-            <dd>${trip.pricing[roomType].toLocaleString("en-US")} USD</dd>
+            <dd>${convert(pricing[roomType]).toLocaleString("en-US")} {currencyLabel}</dd>
           </div>
           <div className="flex justify-between">
             <dt className="text-navy-900/60">Impuestos aéreos</dt>
-            <dd>${trip.pricing.impuestos.toLocaleString("en-US")} USD</dd>
+            <dd>${convert(pricing.impuestos).toLocaleString("en-US")} {currencyLabel}</dd>
           </div>
           {suplemento && (
             <div className="flex justify-between">
               <dt className="text-navy-900/60">Suplemento salida</dt>
-              <dd>${suplemento.amount.toLocaleString("en-US")} USD</dd>
+              <dd>${convert(suplemento.amount).toLocaleString("en-US")} {currencyLabel}</dd>
             </div>
           )}
           <div className="flex justify-between border-t border-rose-100 pt-3 font-semibold text-navy-950">
             <dt>Precio por persona</dt>
-            <dd>${pricePerPerson.toLocaleString("en-US")} USD</dd>
+            <dd>${pricePerPerson.toLocaleString("en-US")} {currencyLabel}</dd>
           </div>
           <div className="flex justify-between">
             <dt className="text-navy-900/60">Pasajeros</dt>
@@ -170,7 +220,7 @@ export default function QuoteCalculator({ initialSlug }: { initialSlug?: string 
         <div className="mt-5 rounded-2xl bg-brand-gradient p-4 text-white">
           <p className="text-xs uppercase tracking-wide text-white/80">Total estimado</p>
           <p className="font-display text-3xl font-extrabold">
-            ${total.toLocaleString("en-US")} <span className="text-base font-semibold">USD</span>
+            ${total.toLocaleString("en-US")} <span className="text-base font-semibold">{currencyLabel}</span>
           </p>
         </div>
 

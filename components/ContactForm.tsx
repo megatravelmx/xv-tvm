@@ -4,6 +4,12 @@ import { useState } from "react";
 import { trips } from "@/data/trips";
 import { buildWhatsAppLink, siteConfig } from "@/data/site";
 
+function randomChallenge() {
+  const a = 1 + Math.floor(Math.random() * 8);
+  const b = 1 + Math.floor(Math.random() * 8);
+  return { a, b, answer: a + b };
+}
+
 export default function ContactForm() {
   const [form, setForm] = useState({
     nombre: "",
@@ -11,7 +17,13 @@ export default function ContactForm() {
     email: "",
     viaje: trips[0].slug,
     mensaje: "",
+    // honeypot: campo invisible para personas reales. Los bots que rellenan
+    // formularios automáticamente suelen llenar también los campos ocultos.
+    sitioWeb: "",
   });
+  const [challenge, setChallenge] = useState(randomChallenge);
+  const [challengeAnswer, setChallengeAnswer] = useState("");
+  const [securityError, setSecurityError] = useState<string | null>(null);
 
   function update<K extends keyof typeof form>(key: K, value: (typeof form)[K]) {
     setForm((f) => ({ ...f, [key]: value }));
@@ -34,12 +46,31 @@ export default function ContactForm() {
     `Solicitud de información — ${trip?.name ?? ""}`
   )}&body=${encodeURIComponent(message)}`;
 
+  /** Verificación anti-spam simple (honeypot + reto matemático) que no
+   * depende de una API key externa. Si Travelium ya tiene cuenta de Google
+   * reCAPTCHA, se puede sustituir este bloque por el widget real. */
+  function passesSecurityCheck() {
+    if (form.sitioWeb.trim() !== "") return false; // honeypot lleno = bot
+    return Number(challengeAnswer) === challenge.answer;
+  }
+
+  function handleSubmit(action: "whatsapp" | "email") {
+    if (!passesSecurityCheck()) {
+      setSecurityError("La respuesta no es correcta. Intenta de nuevo.");
+      setChallenge(randomChallenge());
+      setChallengeAnswer("");
+      return;
+    }
+    setSecurityError(null);
+    window.open(action === "whatsapp" ? whatsappHref : mailHref, "_blank");
+  }
+
   return (
     <form
-      className="grid gap-4 rounded-3xl border border-rose-100 bg-white p-6 sm:p-8"
+      className="relative grid gap-4 rounded-3xl border border-rose-100 bg-white p-6 sm:p-8"
       onSubmit={(e) => {
         e.preventDefault();
-        window.open(whatsappHref, "_blank");
+        handleSubmit("whatsapp");
       }}
     >
       <div className="grid gap-4 sm:grid-cols-2">
@@ -102,13 +133,47 @@ export default function ContactForm() {
         />
       </label>
 
+      {/* Honeypot: invisible para personas, los bots de spam sí lo llenan. */}
+      <div className="absolute -left-[9999px] top-auto h-0 w-0 overflow-hidden" aria-hidden="true">
+        <label>
+          No llenar este campo
+          <input
+            type="text"
+            name="sitioWeb"
+            tabIndex={-1}
+            autoComplete="off"
+            value={form.sitioWeb}
+            onChange={(e) => update("sitioWeb", e.target.value)}
+          />
+        </label>
+      </div>
+
+      <div className="rounded-xl border border-dashed border-rose-200 bg-rose-50 p-4">
+        <label className="text-sm font-semibold text-navy-900">
+          Verificación de seguridad: ¿cuánto es {challenge.a} + {challenge.b}?
+          <input
+            type="text"
+            inputMode="numeric"
+            required
+            value={challengeAnswer}
+            onChange={(e) => {
+              setChallengeAnswer(e.target.value);
+              setSecurityError(null);
+            }}
+            className="mt-1.5 w-full rounded-xl border border-rose-200 px-4 py-2.5 text-sm outline-none focus:border-rose-500"
+            placeholder="Escribe el resultado"
+          />
+        </label>
+        {securityError && <p className="mt-2 text-xs font-semibold text-rose-600">{securityError}</p>}
+      </div>
+
       <div className="mt-2 flex flex-wrap gap-3">
         <button type="submit" className="btn-primary">
           Enviar por WhatsApp
         </button>
-        <a href={mailHref} className="btn-secondary">
+        <button type="button" onClick={() => handleSubmit("email")} className="btn-secondary">
           Enviar por correo
-        </a>
+        </button>
       </div>
 
       <p className="text-xs text-navy-900/50">

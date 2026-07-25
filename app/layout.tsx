@@ -7,6 +7,7 @@ import SamNotice from "@/components/SamNotice";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { siteConfig } from "@/data/site";
+import { fetchTipoCambio } from "@/lib/megaTravel";
 
 // Fraunces: serif premium, muy en tendencia (editorial/lujo) y con trazos
 // mucho más legibles que Playfair Display en negritas grandes — resuelve el
@@ -72,14 +73,23 @@ const organizationJsonLd = {
   areaServed: "MX",
   telephone: siteConfig.phone,
   email: siteConfig.contactEmail,
-  sameAs: [siteConfig.instagram, siteConfig.tiktok].filter(Boolean),
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: siteConfig.address.line,
+    addressLocality: siteConfig.address.city,
+    addressRegion: siteConfig.address.region,
+    addressCountry: "MX",
+  },
+  sameAs: [siteConfig.instagram, siteConfig.tiktok, siteConfig.facebook].filter(Boolean),
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const exchangeRate = await fetchTipoCambio();
+
   return (
     <html lang="es-MX" className={`${display.variable} ${body.variable}`}>
       <GoogleAnalytics />
@@ -89,7 +99,7 @@ export default function RootLayout({
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
-        <Header />
+        <Header exchangeRate={exchangeRate} />
         <main className="flex-1">{children}</main>
         <SamNotice />
         <Footer />

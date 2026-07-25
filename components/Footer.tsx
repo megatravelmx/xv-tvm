@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { siteConfig } from "@/data/site";
 import { trips } from "@/data/trips";
+import { IconInstagram, IconTikTok, IconFacebook } from "@/components/icons";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-rose-100 bg-white">
+    <footer className="border-t border-rose-100 bg-white print:hidden">
       <div className="h-1.5 w-full bg-brand-gradient" />
       <div className="container-page grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div>
@@ -57,6 +58,38 @@ export default function Footer() {
             <li>{siteConfig.phone}</li>
             <li>{siteConfig.contactEmail}</li>
             <li>{siteConfig.officeHours}</li>
+            <li>
+              {siteConfig.address.line}, {siteConfig.address.city}
+            </li>
+            <li className="flex gap-2 pt-1">
+              <a
+                href={siteConfig.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram de Travelium"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-rose-100 text-rose-600 transition hover:bg-rose-500 hover:text-white"
+              >
+                <IconInstagram className="h-4 w-4" />
+              </a>
+              <a
+                href={siteConfig.tiktok}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TikTok de Travelium"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-rose-100 text-rose-600 transition hover:bg-rose-500 hover:text-white"
+              >
+                <IconTikTok className="h-4 w-4" />
+              </a>
+              <a
+                href={siteConfig.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook de Travelium"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-rose-100 text-rose-600 transition hover:bg-rose-500 hover:text-white"
+              >
+                <IconFacebook className="h-4 w-4" />
+              </a>
+            </li>
             <li className="pt-2">
               <Link href="/contacto" className="btn-primary">Escríbenos</Link>
             </li>

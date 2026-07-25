@@ -6,7 +6,7 @@ export default function IncludesExcludes({
   excludes: string[];
 }) {
   return (
-    <div className="grid gap-6 sm:grid-cols-2">
+    <div className="grid gap-6 sm:grid-cols-2 print:grid-cols-1">
       <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-5">
         <p className="font-display text-base font-bold text-emerald-800">El viaje incluye</p>
         <ul className="mt-3 space-y-2 text-sm text-emerald-900/80">

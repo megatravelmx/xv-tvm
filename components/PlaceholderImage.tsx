@@ -26,7 +26,7 @@ export default function PlaceholderImage({
         sizes="(max-width: 768px) 100vw, 50vw"
         className="object-cover"
       />
-      <div className="absolute inset-x-0 bottom-0 bg-navy-950/80 px-3 py-2 backdrop-blur-sm">
+      <div className="absolute inset-x-0 bottom-0 bg-navy-950/80 px-3 py-2 backdrop-blur-sm print:hidden">
         <p className="text-[11px] font-medium leading-tight text-rose-100">
           📷 Imagen temporal — sustituir por: {label}
         </p>

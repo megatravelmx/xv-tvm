@@ -1,6 +1,5 @@
 // ---------------------------------------------------------------------------
-// Configuración general del sitio. Los valores marcados como [PENDIENTE]
-// son placeholders que deben sustituirse por datos reales antes de publicar.
+// Configuración general del sitio. Datos de contacto confirmados por Luis.
 // ---------------------------------------------------------------------------
 
 export const siteConfig = {
@@ -12,11 +11,22 @@ export const siteConfig = {
   legalDisclaimer:
     "Travelium diseña y organiza viajes de quinceañeras a Europa, con años de experiencia coordinando grupos internacionales y acompañando a las familias en cada destino.",
   whatsappNumber: "525597532020",
-  contactEmail: "hola@travelium.mx", // [PENDIENTE] confirmar dominio/correo definitivo
+  contactEmail: "hola@travelium.mx",
   phone: "+52 55 9753 2020",
-  instagram: "https://instagram.com/travelium.mx", // [PENDIENTE]
-  tiktok: "https://tiktok.com/@travelium.mx", // [PENDIENTE]
-  officeHours: "Lunes a viernes 9:00–19:00, sábados 10:00–14:00 (hora CDMX)", // [PENDIENTE] confirmar
+  instagram: "https://www.instagram.com/travel_ium/",
+  tiktok: "https://www.tiktok.com/@travel_ium",
+  facebook: "https://www.facebook.com/traveliumMX",
+  officeHours: "Lunes a viernes 9:00–19:00, sábados 10:00–14:00 (hora CDMX)",
+  address: {
+    line: "Río Misisipi 49, Piso 8, Col. Cuauhtémoc",
+    city: "Ciudad de México",
+    region: "CDMX",
+    country: "México",
+    lat: 19.4275806,
+    lng: -99.1731639,
+    // Link corto real de Google Maps a las oficinas (el que compartió Luis).
+    mapsUrl: "https://maps.app.goo.gl/fPoMDCQLrBMoXYms8",
+  },
 };
 
 export function buildWhatsAppLink(message: string) {

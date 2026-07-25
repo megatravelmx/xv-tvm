@@ -132,3 +132,29 @@ export function IconFileText({ className = base }: IconProps) {
     </svg>
   );
 }
+
+export function IconInstagram({ className = base }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <rect x="2.5" y="2.5" width="19" height="19" rx="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <path d="M17.5 6.5h.01" />
+    </svg>
+  );
+}
+
+export function IconFacebook({ className = base }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+      <path d="M15.12 22V13.06h3.02l.45-3.49h-3.47V7.34c0-1.01.28-1.7 1.73-1.7h1.85V2.53C18.36 2.44 17.26 2.35 16 2.35c-3.03 0-5.11 1.85-5.11 5.25v2.93H7.86v3.49h3.03V22z" />
+    </svg>
+  );
+}
+
+export function IconTikTok({ className = base }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+      <path d="M16.6 5.82a4.28 4.28 0 0 1-3.29-3.75V2h-3.17v13.4a2.6 2.6 0 1 1-1.8-2.47V9.7a5.86 5.86 0 0 0-.83-.06A5.85 5.85 0 1 0 13.5 15.4V9.66a7.4 7.4 0 0 0 4.32 1.38V8a4.3 4.3 0 0 1-1.22-.18 4.27 4.27 0 0 1 0 0v-2z" />
+    </svg>
+  );
+}

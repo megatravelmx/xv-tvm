@@ -5,7 +5,7 @@ import { IconFileText } from "@/components/icons";
 // edad. Vive antes del footer en todas las páginas.
 export default function SamNotice() {
   return (
-    <div className="border-t border-rose-100 bg-blush">
+    <div className="border-t border-rose-100 bg-blush print:hidden">
       <div className="container-page flex flex-col gap-3 py-6 sm:flex-row sm:items-start sm:gap-4">
         <div className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-rose-100 text-rose-600">
           <IconFileText className="h-4 w-4" />

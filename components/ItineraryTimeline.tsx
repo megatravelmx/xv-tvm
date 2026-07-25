@@ -10,7 +10,7 @@ export default function ItineraryTimeline({ days }: { days: ItineraryDay[] }) {
           </span>
           <p className="eyebrow">{d.day}</p>
           <h3 className="mt-1 font-display text-lg font-bold text-navy-950">{d.title}</h3>
-          <p className="mt-1.5 text-sm leading-relaxed text-navy-900/70">{d.description}</p>
+          <p className="mt-1.5 text-justify text-sm leading-relaxed text-navy-900/70">{d.description}</p>
         </li>
       ))}
     </ol>
