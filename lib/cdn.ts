@@ -38,5 +38,14 @@ export function cdnImage(filename: string, options: CdnImageOptions = {}): strin
   params.set("quality", String(quality));
   params.set("format", format);
 
-  return `${CDN_BASE}${encodeURIComponent(filename)}?${params.toString()}`;
+  // Los archivos en Bunny se subieron desde macOS Finder, que normaliza los
+  // nombres con acentos/ñ a Unicode NFD (p. ej. "á" = "a" + acento
+  // combinante, en vez del único carácter "á" en NFC). Si el nombre llega
+  // aquí en NFC (p. ej. tecleado directo en el código), la URL generada no
+  // coincide byte a byte con el archivo real y Bunny responde 404. Normalizar
+  // siempre a NFD antes de codificar evita ese desajuste sin depender de
+  // cómo se haya escrito el string en el código fuente.
+  const normalized = filename.normalize("NFD");
+
+  return `${CDN_BASE}${encodeURIComponent(normalized)}?${params.toString()}`;
 }
