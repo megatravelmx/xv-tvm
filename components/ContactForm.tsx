@@ -4,12 +4,6 @@ import { useState } from "react";
 import { trips } from "@/data/trips";
 import { buildWhatsAppLink, siteConfig } from "@/data/site";
 
-function randomChallenge() {
-  const a = 1 + Math.floor(Math.random() * 8);
-  const b = 1 + Math.floor(Math.random() * 8);
-  return { a, b, answer: a + b };
-}
-
 export default function ContactForm() {
   const [form, setForm] = useState({
     nombre: "",
@@ -18,11 +12,11 @@ export default function ContactForm() {
     viaje: trips[0].slug,
     mensaje: "",
     // honeypot: campo invisible para personas reales. Los bots que rellenan
-    // formularios automáticamente suelen llenar también los campos ocultos.
+    // formularios automáticamente suelen llenar también los campos ocultos,
+    // así que si viene lleno lo tratamos como spam sin pedirle nada al
+    // usuario real (cero fricción, a diferencia de un captcha visible).
     sitioWeb: "",
   });
-  const [challenge, setChallenge] = useState(randomChallenge);
-  const [challengeAnswer, setChallengeAnswer] = useState("");
   const [securityError, setSecurityError] = useState<string | null>(null);
 
   function update<K extends keyof typeof form>(key: K, value: (typeof form)[K]) {
@@ -46,19 +40,18 @@ export default function ContactForm() {
     `Solicitud de información — ${trip?.name ?? ""}`
   )}&body=${encodeURIComponent(message)}`;
 
-  /** Verificación anti-spam simple (honeypot + reto matemático) que no
-   * depende de una API key externa. Si Travelium ya tiene cuenta de Google
-   * reCAPTCHA, se puede sustituir este bloque por el widget real. */
+  /** Verificación anti-spam invisible: solo honeypot, sin pedirle nada al
+   * usuario real. No depende de una API key externa. Si en el futuro llega
+   * a haber spam real (este formulario no tiene backend, solo abre
+   * WhatsApp/correo, así que el riesgo es bajo), se puede agregar Google
+   * reCAPTCHA v3 (invisible, sin fricción) con un site key propio. */
   function passesSecurityCheck() {
-    if (form.sitioWeb.trim() !== "") return false; // honeypot lleno = bot
-    return Number(challengeAnswer) === challenge.answer;
+    return form.sitioWeb.trim() === ""; // honeypot lleno = bot
   }
 
   function handleSubmit(action: "whatsapp" | "email") {
     if (!passesSecurityCheck()) {
-      setSecurityError("La respuesta no es correcta. Intenta de nuevo.");
-      setChallenge(randomChallenge());
-      setChallengeAnswer("");
+      setSecurityError("No pudimos validar el formulario. Intenta de nuevo o escríbenos directo por WhatsApp.");
       return;
     }
     setSecurityError(null);
@@ -148,24 +141,11 @@ export default function ContactForm() {
         </label>
       </div>
 
-      <div className="rounded-xl border border-dashed border-rose-200 bg-rose-50 p-4">
-        <label className="text-sm font-semibold text-navy-900">
-          Verificación de seguridad: ¿cuánto es {challenge.a} + {challenge.b}?
-          <input
-            type="text"
-            inputMode="numeric"
-            required
-            value={challengeAnswer}
-            onChange={(e) => {
-              setChallengeAnswer(e.target.value);
-              setSecurityError(null);
-            }}
-            className="mt-1.5 w-full rounded-xl border border-rose-200 px-4 py-2.5 text-sm outline-none focus:border-rose-500"
-            placeholder="Escribe el resultado"
-          />
-        </label>
-        {securityError && <p className="mt-2 text-xs font-semibold text-rose-600">{securityError}</p>}
-      </div>
+      {securityError && (
+        <p className="text-xs font-semibold text-rose-600" role="alert">
+          {securityError}
+        </p>
+      )}
 
       <div className="mt-2 flex flex-wrap gap-3">
         <button type="submit" className="btn-primary">

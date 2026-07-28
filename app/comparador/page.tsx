@@ -201,7 +201,7 @@ export default function ComparadorPage() {
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-4">
             <Link href="/cotizador" className="btn-light animate-cta-pulse">
-              Cotizar mi viaje
+              Quiero detalles de reserva
             </Link>
             <Link href="/contacto" className="rounded-full border-2 border-white px-6 py-3 text-sm font-semibold text-white transition hover:bg-white hover:text-navy-950">
               Hablar con un ejecutivo

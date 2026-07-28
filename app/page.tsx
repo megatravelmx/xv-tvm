@@ -75,7 +75,7 @@ export default function HomePage() {
                 Ver los 3 itinerarios
               </Link>
               <Link href="/cotizador" className="btn-light animate-cta-pulse">
-                Cotizar mi viaje
+                Quiero detalles de reserva
               </Link>
             </div>
             <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-white/85">
@@ -108,7 +108,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="Míralo con tus propios ojos"
             title="Historias del viaje"
-            description="Toca un círculo para ver el video, tal como en tus stories de Instagram."
+            description="Toca un círculo para ver el video."
           />
           <div className="mt-6">
             <InstagramStories />
@@ -248,7 +248,7 @@ export default function HomePage() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="/cotizador" className="btn-light animate-cta-pulse">
-              Cotizar mi viaje
+              Quiero detalles de reserva
             </Link>
             <Link href="/contacto" className="rounded-full border-2 border-white px-6 py-3 text-sm font-semibold text-white transition hover:bg-white hover:text-navy-950">
               Hablar con un ejecutivo

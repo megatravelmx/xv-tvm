@@ -57,7 +57,7 @@ export default function Header({
             Contacto
           </Link>
           <Link href="/cotizador" className="btn-primary animate-cta-pulse">
-            Cotizar mi viaje
+            Quiero detalles de reserva
           </Link>
         </div>
 
@@ -96,7 +96,7 @@ export default function Header({
               Contacto
             </Link>
             <Link href="/cotizador" onClick={() => setOpen(false)} className="btn-primary animate-cta-pulse mt-2 w-full">
-              Cotizar mi viaje
+              Quiero detalles de reserva
             </Link>
           </div>
         </div>

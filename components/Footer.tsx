@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { siteConfig } from "@/data/site";
+import { buildWhatsAppLink, siteConfig } from "@/data/site";
 import { trips } from "@/data/trips";
 import { IconInstagram, IconTikTok, IconFacebook } from "@/components/icons";
 
@@ -55,8 +55,26 @@ export default function Footer() {
         <div>
           <p className="font-display text-sm font-bold uppercase tracking-wide text-navy-950">Contacto</p>
           <ul className="mt-4 space-y-2 text-sm text-navy-900/70">
-            <li>{siteConfig.phone}</li>
-            <li>{siteConfig.contactEmail}</li>
+            <li>
+              <a href={`tel:${siteConfig.phone.replace(/\s+/g, "")}`} className="hover:text-rose-500">
+                {siteConfig.phone}
+              </a>
+            </li>
+            <li>
+              <a
+                href={buildWhatsAppLink("¡Hola! Quiero información sobre un viaje de quinceañeras Travelium.")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-rose-500"
+              >
+                WhatsApp
+              </a>
+            </li>
+            <li>
+              <a href={`mailto:${siteConfig.contactEmail}`} className="hover:text-rose-500">
+                {siteConfig.contactEmail}
+              </a>
+            </li>
             <li>{siteConfig.officeHours}</li>
             <li>
               {siteConfig.address.line}, {siteConfig.address.city}

@@ -116,7 +116,7 @@ export default function PlanesDePagoPage() {
             abonos según la fecha de salida elegida.
           </p>
           <Link href="/cotizador" className="btn-light animate-cta-pulse mt-6 inline-flex">
-            Cotizar mi viaje
+            Quiero detalles de reserva
           </Link>
         </div>
       </div>

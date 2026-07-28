@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import SectionHeading from "@/components/SectionHeading";
 import ContactForm from "@/components/ContactForm";
-import { siteConfig } from "@/data/site";
+import { buildWhatsAppLink, siteConfig } from "@/data/site";
 import { IconInstagram, IconTikTok, IconFacebook } from "@/components/icons";
 
 const title = "Contacto";
@@ -28,8 +28,27 @@ export default function ContactoPage() {
           />
 
           <div className="mt-8 space-y-4 text-sm text-navy-900/80">
-            <p><span className="font-semibold text-navy-950">Teléfono / WhatsApp:</span> {siteConfig.phone}</p>
-            <p><span className="font-semibold text-navy-950">Correo:</span> {siteConfig.contactEmail}</p>
+            <p>
+              <span className="font-semibold text-navy-950">Teléfono:</span>{" "}
+              <a href={`tel:${siteConfig.phone.replace(/\s+/g, "")}`} className="text-rose-600 hover:underline">
+                {siteConfig.phone}
+              </a>
+              {" · "}
+              <a
+                href={buildWhatsAppLink("¡Hola! Quiero información sobre un viaje de quinceañeras Travelium.")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-rose-600 hover:underline"
+              >
+                Escribir por WhatsApp
+              </a>
+            </p>
+            <p>
+              <span className="font-semibold text-navy-950">Correo:</span>{" "}
+              <a href={`mailto:${siteConfig.contactEmail}`} className="text-rose-600 hover:underline">
+                {siteConfig.contactEmail}
+              </a>
+            </p>
             <p><span className="font-semibold text-navy-950">Horario:</span> {siteConfig.officeHours}</p>
             <p>
               <span className="font-semibold text-navy-950">Oficinas:</span> {siteConfig.address.line},{" "}
