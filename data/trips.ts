@@ -37,7 +37,7 @@ export const trips: Trip[] = [
     itinerary: [
       { day: "Día 1", title: "México – Madrid", description: "La gran aventura comienza. Presentación en el Aeropuerto Internacional de la Ciudad de México con 5 horas de anticipación para abordar el vuelo trasatlántico con destino a Londres, con escala en una ciudad europea. Disfrutaremos la emoción del viaje y pasaremos la noche a bordo rumbo a Europa." },
       { day: "Día 2", title: "Madrid – Londres", description: "¡Bienvenidas a Europa! Al llegar, conectaremos con nuestro vuelo hacia Londres, famosa por su mezcla de historia, modernidad y cultura pop. Nos trasladaremos al hotel para instalarnos y más tarde disfrutaremos nuestra primera cena juntas. ¡La emoción apenas comienza!" },
-      { day: "Día 3", title: "Londres & Madame Tussauds", description: "Recorrido panorámico por los lugares más icónicos de Londres: Hyde Park, Kensington, Piccadilly Circus, el Parlamento con su emblemático Big Ben y el Palacio de Buckingham, con posible Cambio de Guardia. Veremos la Torre de Londres y subiremos a la London Eye. Por la tarde, visita al museo de cera Madame Tussauds. Cena y alojamiento." },
+      { day: "Día 3", title: "Londres & Madame Tussauds", description: "Recorrido panorámico por los lugares más icónicos de Londres: Hyde Park, Kensington, Piccadilly Circus, el Parlamento con su emblemático Big Ben y el Palacio de Buckingham, con posible Cambio de Guardia. Veremos la Torre de Londres, subiremos a la London Eye y disfrutaremos de un paseo por el canal. Por la tarde, visita al museo de cera Madame Tussauds. Cena y alojamiento." },
       { day: "Día 4", title: "Londres – Canal de la Mancha – Brujas / Bruselas", description: "Tomaremos el ferry para cruzar el Canal de la Mancha rumbo a Bélgica. Llegaremos a Brujas, ciudad de cuento de hadas con calles empedradas y románticos canales. Continuación hacia Bruselas, la elegante capital belga. Cena y alojamiento." },
       { day: "Día 5", title: "Brujas / Bruselas – París", description: "Visita panorámica de Bruselas: Grand Place, Manneken Pis y el Atomium. Partiremos rumbo a la romántica París. Tras cenar, recorrido por la ciudad iluminada, paseo en barco por el Sena y la Torre Eiffel brillando en la noche." },
       { day: "Día 6", title: "París", description: "Ascenso a la Torre Eiffel para admirar París desde lo más alto. Recorrido panorámico: Campos Elíseos, Arco del Triunfo, Notre Dame, la Ópera y el Museo del Louvre. Por la tarde, Palacio de Versalles y, para cerrar, el barrio de Montmartre y la basílica del Sagrado Corazón al atardecer." },
@@ -85,8 +85,8 @@ export const trips: Trip[] = [
       "Transporte en autocar turístico",
       "Seguro de asistencia",
       "Tour líder",
-      "Kit de viaje: backpack, playera, sudadera, gorra",
-      "eSIM (requiere teléfono desbloqueado compatible con chip virtual)",
+      "Kit de viaje: backpack, playeras y sudadera (uso obligatorio, ayuda a identificar al grupo)",
+      "eSIM con 12 GB de datos para equipos compatibles (teléfono desbloqueado)",
       "Todas las entradas y visitas listadas en el itinerario (London Eye, Madame Tussauds, Palacio de Versalles, Euro Disney con 2 parques y fuegos artificiales, Europa Park, Monte Titlis, cena temática en Palazzo Borghese, Coliseo, Estadio Santiago Bernabéu, Parque Warner, entre otras)",
     ],
     excludes: [
@@ -139,7 +139,7 @@ export const trips: Trip[] = [
     itinerary: [
       { day: "Día 1", title: "México – Madrid", description: "Nos reunimos en el Aeropuerto Internacional de la Ciudad de México 5 horas antes de la salida. Embarque en vuelo trasatlántico rumbo a Europa. Noche a bordo." },
       { day: "Día 2", title: "Londres", description: "¡Bienvenidas a Europa! Conexión hacia Londres. Traslado al hotel para instalarnos y primera cena juntas." },
-      { day: "Día 3", title: "Londres", description: "Recorrido por Hyde Park, Piccadilly Circus, el Big Ben y el Palacio de Buckingham (posible Cambio de Guardia). Visita a Madame Tussauds. Subida al London Eye con la ciudad iluminada. Cena y alojamiento." },
+      { day: "Día 3", title: "Londres", description: "Recorrido por Hyde Park, Piccadilly Circus, el Big Ben y el Palacio de Buckingham (posible Cambio de Guardia). Visita a Madame Tussauds. Subida al London Eye con la ciudad iluminada y paseo por el canal. Cena y alojamiento." },
       { day: "Día 4", title: "Londres – Canal de la Mancha – Ámsterdam", description: "Salida hacia el puerto de Dover para cruzar el Canal de la Mancha en ferry. Llegada a Ámsterdam y paseo en barco por sus canales iluminados. Cena y alojamiento." },
       { day: "Día 5", title: "Ámsterdam – Marken – Volendam – Ámsterdam", description: "Visita a Marken y Volendam, con parada en una granja tradicional de quesos y una fábrica de zuecos, y los famosos molinos de viento. De regreso, visita a la Casa de Ana Frank. Cena y alojamiento." },
       { day: "Día 6", title: "Ámsterdam – Brujas – París", description: "Salida hacia Brujas, ciudad medieval de cuento. Continuación a París. Tras la cena, crucero nocturno por el Sena con la Torre Eiffel iluminada." },
@@ -246,7 +246,7 @@ export const trips: Trip[] = [
     itinerary: [
       { day: "Día 1", title: "México – Madrid", description: "La gran aventura comienza. Presentación en el Aeropuerto Internacional de la Ciudad de México con 5 horas de anticipación para abordar el vuelo trasatlántico con destino a Londres, con escala en una ciudad europea. Noche a bordo rumbo a Europa." },
       { day: "Día 2", title: "Madrid – Londres", description: "¡Bienvenidas a Europa! Conexión hacia Londres. Traslado al hotel para instalarnos y primera cena juntas." },
-      { day: "Día 3", title: "Londres & Madame Tussauds", description: "Recorrido panorámico por Hyde Park, Kensington, Piccadilly Circus, el Big Ben y el Palacio de Buckingham. Torre de Londres y London Eye. Visita a Madame Tussauds. Cena y alojamiento." },
+      { day: "Día 3", title: "Londres & Madame Tussauds", description: "Recorrido panorámico por Hyde Park, Kensington, Piccadilly Circus, el Big Ben y el Palacio de Buckingham. Torre de Londres, London Eye y paseo por el canal. Visita a Madame Tussauds. Cena y alojamiento." },
       { day: "Día 4", title: "Londres – Canal de la Mancha – Brujas / Bruselas", description: "Ferry para cruzar el Canal de la Mancha. Brujas, ciudad de cuento de hadas. Continuación a Bruselas. Cena y alojamiento." },
       { day: "Día 5", title: "Brujas / Bruselas – París", description: "Visita panorámica de Bruselas: Grand Place, Manneken Pis y el Atomium. Rumbo a París. Recorrido nocturno, paseo en barco por el Sena y la Torre Eiffel iluminada." },
       { day: "Día 6", title: "París", description: "Ascenso a la Torre Eiffel. Campos Elíseos, Arco del Triunfo, Notre Dame y el Museo del Louvre. Palacio de Versalles y Montmartre al atardecer." },
@@ -294,8 +294,8 @@ export const trips: Trip[] = [
       "Transporte en autocar turístico",
       "Seguro de asistencia",
       "3 chaperonas con experiencia en grupos de menores",
-      "Kit de viaje: backpack, playera, sudadera, gorra",
-      "eSIM (requiere teléfono desbloqueado compatible con chip virtual)",
+      "Kit de viaje: backpack, playeras y sudadera (uso obligatorio, ayuda a identificar al grupo)",
+      "eSIM con 12 GB de datos para equipos compatibles (teléfono desbloqueado)",
       "Todas las entradas y visitas listadas en el itinerario (London Eye, Madame Tussauds, Palacio de Versalles, Euro Disney con 2 parques y fuegos artificiales, Europa Park, Monte Titlis, cena temática en Palazzo Borghese, Coliseo, Estadio Santiago Bernabéu, Parque Warner, entre otras)",
     ],
     excludes: [

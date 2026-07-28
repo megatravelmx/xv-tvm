@@ -7,6 +7,8 @@ import TrustBadges from "@/components/TrustBadges";
 import Testimonials from "@/components/Testimonials";
 import ComingSoonCard from "@/components/ComingSoonCard";
 import FAQAccordion from "@/components/FAQAccordion";
+import PreventaBanner from "@/components/PreventaBanner";
+import InstagramStories from "@/components/InstagramStories";
 import { parentFaqs, siteConfig } from "@/data/site";
 import { IconSparkle, IconTag, IconHeadset, IconShieldCheck } from "@/components/icons";
 
@@ -94,6 +96,22 @@ export default function HomePage() {
               priority
               className="object-contain object-bottom drop-shadow-2xl"
             />
+          </div>
+        </div>
+      </section>
+
+      <PreventaBanner />
+
+      {/* STORIES: reels en formato historia de Instagram */}
+      <section className="section-y bg-white !pb-10 !pt-10">
+        <div className="container-page">
+          <SectionHeading
+            eyebrow="Míralo con tus propios ojos"
+            title="Historias del viaje"
+            description="Toca un círculo para ver el video, tal como en tus stories de Instagram."
+          />
+          <div className="mt-6">
+            <InstagramStories />
           </div>
         </div>
       </section>

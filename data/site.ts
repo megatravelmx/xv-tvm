@@ -34,10 +34,24 @@ export function buildWhatsAppLink(message: string) {
   return `https://wa.me/${siteConfig.whatsappNumber}?text=${encoded}`;
 }
 
+// Datos de la preventa oficial 2027 (fuente: área de producto). Los precios
+// que ya están cargados en cada viaje (data/trips.ts) corresponden a esta
+// tarifa de preventa; regularPricing es solo para mostrar el "antes/después"
+// una vez que expire, el 15 de agosto de 2026.
+export const preventa = {
+  vigente: true,
+  fechaLimite: "15 de agosto de 2026",
+  fechaLimiteISO: "2026-08-15",
+  regularPricing: {
+    "26": { doble: 7199, impuestos: 999, suplemento: 599 },
+    "18": { doble: 5699, impuestos: 999, suplemento: 499 },
+  },
+};
+
 export const parentFaqs = [
   {
     q: "¿Quién acompaña a mi hija durante el viaje?",
-    a: "Cada grupo viaja con un guía acompañante profesional de habla hispana durante todo el recorrido, además de chaperonas con experiencia específica en grupos de menores en los circuitos grupales. En 'Descubre Europa con Mamá', la propia mamá viaja como acompañante.",
+    a: "Cada grupo viaja con un guía acompañante profesional de habla hispana durante todo el recorrido. En los circuitos grupales (Quinceañeras a Europa y Quinceañeras a Europa II) se suman 3 chaperonas especializadas en grupos de menores, cada una a cargo de aproximadamente 14 viajeras. En 'Descubre Europa con Mamá', la propia mamá viaja como acompañante y un tour líder coordina la logística del recorrido.",
   },
   {
     q: "¿Qué experiencia tiene la empresa operando grupos de quinceañeras?",
@@ -45,31 +59,47 @@ export const parentFaqs = [
   },
   {
     q: "¿Qué incluye exactamente el precio del paquete?",
-    a: "Vuelos internacionales, hospedaje, alimentación en media pensión (desayuno y cena), transporte en autocar turístico, seguro de asistencia, guía de habla hispana y las entradas/visitas indicadas en cada itinerario. Cada página de viaje detalla el 'incluye' y 'no incluye' completo.",
+    a: "Vuelo redondo desde Ciudad de México, hospedaje, media pensión (desayuno y cena), transporte en autocar turístico, seguro de asistencia médica, guía de habla hispana, kit de viaje (backpack, playeras y sudadera de uso obligatorio), eSIM con 12 GB de datos y las entradas/visitas indicadas en cada itinerario. Cada página de viaje detalla el 'incluye' y 'no incluye' completo.",
   },
   {
     q: "¿Cuánto debo pagar para apartar el lugar de mi hija?",
-    a: "El monto de apartado y el calendario de abonos se confirman con un ejecutivo al momento de cotizar, de acuerdo con la fecha de salida y disponibilidad vigente.",
+    a: "El apartado es de $600 USD por pasajera(o), no reembolsable en cancelaciones con más de 151 días de anticipación a la salida. 150 días antes de la salida se realiza un segundo pago de $2,000 USD (acumulando $2,600 USD), y 90 días antes se liquida el total del viaje.",
   },
   {
     q: "¿Puedo realizar pagos mensuales?",
-    a: "Sí. Ofrecemos planes de abonos hasta la fecha límite de liquidación antes de la salida. Un ejecutivo te comparte el calendario específico según el viaje elegido.",
+    a: "Sí. Puedes abonar a tu ritmo entre el apartado y la fecha del segundo pago (150 días antes de la salida) y entre ese pago y la liquidación total (90 días antes). Un ejecutivo te comparte el calendario específico según el viaje elegido.",
   },
   {
     q: "¿Qué sucede en caso de una emergencia durante el viaje?",
-    a: "Todos los paquetes incluyen seguro de asistencia en viaje, guía acompañante y, en los circuitos grupales, chaperonas con experiencia en el manejo de grupos de menores y contacto directo con la familia.",
+    a: "Todos los paquetes incluyen seguro de asistencia médica con consultas virtuales y una red de hospitales locales en destino, guía acompañante y, en los circuitos grupales, chaperonas con experiencia en el manejo de grupos de menores y contacto directo con la familia a través de nuestro canal de asistencia 24/7.",
   },
   {
     q: "¿Cómo podré comunicarme con mi hija durante el recorrido?",
-    a: "El paquete incluye eSIM para mantener conexión a internet (requiere un teléfono desbloqueado y compatible). El tour leader y las chaperonas mantienen comunicación constante con las familias ante cualquier eventualidad.",
+    a: "El paquete incluye una eSIM con 12 GB de datos (requiere teléfono desbloqueado compatible), que permite comunicarse por WhatsApp durante todo el recorrido — no funciona como línea telefónica tradicional. En los circuitos grupales, además, las familias tienen acceso a un grupo privado de Facebook con fotos y actualizaciones del viaje (este grupo no aplica para 'Descubre Europa con Mamá', ya que mamá viaja con su hija).",
   },
   {
     q: "¿Qué documentos necesita mi hija para viajar?",
-    a: "Pasaporte vigente y, si la menor no viaja con madre o tutor legal, el Formato SAM del INM. Algunos destinos pueden requerir trámites adicionales (por ejemplo, ETA para Reino Unido), detallados en cada itinerario.",
+    a: "Pasaporte con vigencia mínima de 6 meses respecto a la fecha de regreso y, si la menor no viaja con madre o tutor legal, el Formato SAM del INM y una carta notarial que autorice a las chaperonas a representarla en el extranjero. También se requiere el trámite ETA para entrar a Reino Unido. El día del vuelo tu hija solo necesita presentar su pasaporte: el resto de la documentación la lleva el equipo Travelium.",
+  },
+  {
+    q: "¿Cuánto dinero debe llevar mi hija para gastos personales?",
+    a: "Para almuerzos, bebidas y gastos menores recomendamos un presupuesto de 45 a 50 euros por día (aprox. 900 euros para el viaje de 18 días y 1,300 euros para el de 26 días), sin contar compras personales. Sugerimos dividirlo entre efectivo, una tarjeta para uso diario y una segunda tarjeta de respaldo que puede quedar a resguardo de la chaperona.",
+  },
+  {
+    q: "¿Qué equipaje puede llevar mi hija?",
+    a: "Una maleta documentada con peso máximo de 23 kg y la backpack de Travelium (máximo 10 kg) como equipaje de mano — no se permite maleta de carry-on adicional, ya que cada viajera es responsable de cargar y cuidar su propio equipaje durante todo el recorrido.",
+  },
+  {
+    q: "¿Qué moneda se usa durante el viaje?",
+    a: "La moneda principal es el euro, utilizado en prácticamente todo el recorrido. En Londres se usa la libra esterlina: recomendamos pagar con tarjeta y llevar solo un monto limitado en efectivo, ya que muchos establecimientos ahí solo aceptan tarjeta.",
+  },
+  {
+    q: "¿El viaje es solo para mujeres?",
+    a: "Es un programa pensado principalmente para quinceañeras, con un cupo limitado a 4 acompañantes varones por grupo (13 a 15 años). Consulta con tu ejecutivo la disponibilidad vigente para el grupo que te interesa.",
   },
   {
     q: "¿Qué sucede si el viaje se cancela?",
-    a: "Las políticas de cancelación se informan de forma clara antes de confirmar el apartado, junto con condiciones de compra y reembolsos, conforme a los términos y condiciones vigentes.",
+    a: "Aplican cargos por cancelación según la anticipación: sin cargo con más de 151 días antes de la salida (solo para reservas individuales), $600 USD entre 150 y 91 días, $2,600 USD entre 90 y 70 días, y el 100% del valor del viaje dentro de los 69 días previos a la salida.",
   },
   {
     q: "¿Qué ocurre si mi hija no obtiene una visa?",

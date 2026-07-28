@@ -49,3 +49,11 @@ export function cdnImage(filename: string, options: CdnImageOptions = {}): strin
 
   return `${CDN_BASE}${encodeURIComponent(normalized)}?${params.toString()}`;
 }
+
+/**
+ * Construye la URL de cualquier otro archivo del CDN (video, pdf, etc.) sin
+ * pasar por el Optimizer de imágenes — misma normalización NFD que cdnImage.
+ */
+export function cdnFile(filename: string): string {
+  return `${CDN_BASE}${encodeURIComponent(filename.normalize("NFD"))}`;
+}

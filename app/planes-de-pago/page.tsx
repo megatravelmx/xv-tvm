@@ -20,17 +20,24 @@ const steps = [
     desc: "Selecciona itinerario, tipo de habitación y fecha de salida. Recibes el precio total con impuestos y suplementos claramente desglosados.",
   },
   {
-    title: "Aparta con un pago inicial",
-    desc: "Confirmamos disponibilidad antes de cobrar el apartado. El monto exacto y el calendario de abonos se confirman con tu ejecutivo según el viaje y fecha elegidos.",
+    title: "Aparta con $600 USD",
+    desc: "El apartado es de $600 USD por pasajera(o). No es reembolsable en cancelaciones con más de 151 días de anticipación a la salida.",
   },
   {
-    title: "Abona a tu ritmo",
-    desc: "Realiza abonos parciales hasta la fecha límite de liquidación, con recordatorios y comprobantes de cada pago.",
+    title: "Segundo pago 150 días antes",
+    desc: "Se realiza un pago adicional de $2,000 USD, acumulando $2,600 USD entre apartado y segundo pago. Puedes abonar a tu ritmo entre una fecha y otra.",
   },
   {
-    title: "Liquida antes de la salida",
+    title: "Liquida 90 días antes de la salida",
     desc: "Al completar el pago total se libera la documentación y la información operativa para el viaje.",
   },
+];
+
+const cancelacion = [
+  { periodo: "Más de 151 días antes", cargo: "Sin cargo*" },
+  { periodo: "Entre 150 y 91 días antes", cargo: "$600 USD" },
+  { periodo: "Entre 90 y 70 días antes", cargo: "$2,600 USD" },
+  { periodo: "69 días o menos antes", cargo: "100% del valor del viaje" },
 ];
 
 const methods = [
@@ -75,6 +82,31 @@ export default function PlanesDePagoPage() {
               </div>
             ))}
           </div>
+        </div>
+
+        <div className="mt-14">
+          <SectionHeading eyebrow="Política de cancelación" title="¿Qué pasa si necesito cancelar?" />
+          <div className="mt-6 overflow-hidden rounded-3xl border border-rose-100">
+            <table className="w-full border-collapse text-sm">
+              <thead>
+                <tr className="bg-blue-500 text-white">
+                  <th className="px-5 py-3 text-left font-semibold">Periodo antes de la salida</th>
+                  <th className="px-5 py-3 text-left font-semibold">Cargo por cancelación</th>
+                </tr>
+              </thead>
+              <tbody>
+                {cancelacion.map((c, i) => (
+                  <tr key={c.periodo} className={i % 2 === 0 ? "bg-white" : "bg-rose-100/40"}>
+                    <td className="px-5 py-3 text-navy-900/80">{c.periodo}</td>
+                    <td className="px-5 py-3 font-semibold text-navy-950">{c.cargo}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-3 text-xs text-navy-900/50">
+            *Solo aplica para expedientes individuales. Reservas de la misma agencia con más de 5 pasajeros a cancelar tienen políticas distintas — consulta con tu ejecutivo.
+          </p>
         </div>
 
         <div className="mt-14 rounded-3xl bg-brand-gradient p-8 text-center text-white sm:p-10">
