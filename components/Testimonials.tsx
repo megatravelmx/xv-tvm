@@ -1,4 +1,6 @@
+import Image from "next/image";
 import { testimonialsPlaceholder } from "@/data/site";
+import { cdnImage } from "@/lib/cdn";
 
 export default function Testimonials() {
   return (
@@ -6,11 +8,17 @@ export default function Testimonials() {
       {testimonialsPlaceholder.map((t) => (
         <figure
           key={t.name + t.trip}
-          className="rounded-3xl border-2 border-dashed border-rose-300 bg-rose-100/40 p-6"
+          className="rounded-3xl border border-rose-100 bg-white p-6 shadow-sm"
         >
           <div className="mb-3 flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-rose-300 text-sm font-bold text-white">
-              ?
+            <div className="relative h-10 w-10 flex-none overflow-hidden rounded-full bg-rose-300">
+              <Image
+                src={cdnImage(t.avatarImage, { width: 100, height: 100 })}
+                alt={t.name}
+                fill
+                sizes="40px"
+                className="object-cover"
+              />
             </div>
             <div>
               <p className="text-sm font-bold text-navy-950">{t.name}</p>

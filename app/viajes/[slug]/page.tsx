@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { trips, getTripBySlug } from "@/data/trips";
 import { siteConfig } from "@/data/site";
-import PlaceholderImage from "@/components/PlaceholderImage";
+import { cdnImage } from "@/lib/cdn";
 import ItineraryTimeline from "@/components/ItineraryTimeline";
 import PricingTable from "@/components/PricingTable";
 import HotelsTable from "@/components/HotelsTable";
@@ -33,12 +34,13 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   const title = `${trip.name} (${trip.code})`;
   const description = `${trip.tagline} ${trip.duration.days} días, ${trip.countries.length} países, desde $${trip.pricing.doble.toLocaleString("en-US")} USD.`;
   const url = `/viajes/${trip.slug}`;
+  const ogImage = cdnImage(trip.heroImage, { width: 1200, height: 630, format: "jpeg" });
   return {
     title,
     description,
     alternates: { canonical: url },
-    openGraph: { title, description, url },
-    twitter: { title, description },
+    openGraph: { title, description, url, images: [ogImage] },
+    twitter: { title, description, images: [ogImage] },
   };
 }
 
@@ -187,12 +189,16 @@ export default async function TripDetailPage({ params }: { params: { slug: strin
             </div>
           </div>
 
-          <PlaceholderImage
-            seed={trip.heroPlaceholder.seed}
-            label={trip.heroPlaceholder.label}
-            aspect="aspect-[4/3]"
-            className="shadow-2xl print:hidden"
-          />
+          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-2xl print:hidden">
+            <Image
+              src={cdnImage(trip.heroImage, { width: 1200, height: 900 })}
+              alt={trip.name}
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              priority
+              className="object-cover"
+            />
+          </div>
         </div>
       </section>
 
@@ -282,8 +288,16 @@ export default async function TripDetailPage({ params }: { params: { slug: strin
         <div className="container-page">
           <SectionHeading eyebrow="Galería" title="Así se ve este itinerario" />
           <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4 print:grid-cols-2 print:gap-2">
-            {trip.galleryPlaceholders.map((g) => (
-              <PlaceholderImage key={g.seed} seed={g.seed} label={g.label} aspect="aspect-square" />
+            {trip.galleryImages.map((filename) => (
+              <div key={filename} className="relative aspect-square overflow-hidden rounded-2xl">
+                <Image
+                  src={cdnImage(filename, { width: 600, height: 600 })}
+                  alt={trip.name}
+                  fill
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                  className="object-cover"
+                />
+              </div>
             ))}
           </div>
         </div>

@@ -27,3 +27,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# fuente local de imágenes (ya subidas a BunnyCDN, no se sirven desde la app)
+/images-sitio-web

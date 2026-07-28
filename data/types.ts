@@ -35,8 +35,10 @@ export type Trip = {
   salidas: string[];
   countries: string[];
   cities: string[];
-  heroPlaceholder: { seed: string; label: string };
-  galleryPlaceholders: { seed: string; label: string }[];
+  /** Nombre de archivo (sin ruta) tal como está subido en el CDN de Bunny. */
+  heroImage: string;
+  /** Nombres de archivo de la galería, en el CDN de Bunny. */
+  galleryImages: string[];
   summary: string;
   highlights: string[];
   itinerary: ItineraryDay[];

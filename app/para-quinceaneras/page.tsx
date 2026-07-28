@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { trips } from "@/data/trips";
 import SectionHeading from "@/components/SectionHeading";
-import PlaceholderImage from "@/components/PlaceholderImage";
+import { cdnImage } from "@/lib/cdn";
 
 const title = "Para la quinceañera: destinos y experiencias";
 const description = "Destinos, experiencias y la noche de gala que vas a vivir en tu viaje de XV años por Europa.";
@@ -16,12 +17,12 @@ export const metadata: Metadata = {
 };
 
 const momentos = [
-  { title: "Torre Eiffel al atardecer", seed: "qxv-eiffel" },
-  { title: "Góndola en Venecia", seed: "qxv-venecia" },
-  { title: "Día completo en Disneyland París", seed: "qxv-disney" },
-  { title: "Nieve en el Monte Titlis", seed: "qxv-titlis" },
-  { title: "Noche de gala en el Palazzo Borghese", seed: "qxv-palazzo" },
-  { title: "Coliseo Romano", seed: "qxv-coliseo" },
+  { title: "Torre Eiffel al atardecer", file: "momento-01-eiffel.jpg" },
+  { title: "Góndola en Venecia", file: "momento-02-venecia.jpg" },
+  { title: "Día completo en Disneyland París", file: "momento-03-disney.jpg" },
+  { title: "Nieve en el Monte Titlis", file: "momento-04-titlis.jpg" },
+  { title: "Noche de gala en el Palazzo Borghese", file: "momento-05-palazzo.jpg" },
+  { title: "Coliseo Romano", file: "momento-06-coliseo.jpg" },
 ];
 
 export default function ParaQuinceanerasPage() {
@@ -37,8 +38,16 @@ export default function ParaQuinceanerasPage() {
 
         <div className="mt-10 grid grid-cols-2 gap-4 lg:grid-cols-3">
           {momentos.map((m) => (
-            <div key={m.seed} className="relative">
-              <PlaceholderImage seed={m.seed} label={`Foto real: ${m.title}`} aspect="aspect-[4/5]" />
+            <div key={m.file} className="relative">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
+                <Image
+                  src={cdnImage(m.file, { width: 700, height: 875 })}
+                  alt={m.title}
+                  fill
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                  className="object-cover"
+                />
+              </div>
               <p className="mt-2 text-center text-sm font-semibold text-navy-950">{m.title}</p>
             </div>
           ))}

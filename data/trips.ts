@@ -18,12 +18,12 @@ export const trips: Trip[] = [
       "Estrasburgo", "Europa-Park", "Zúrich", "Monte Titlis", "Milán", "Verona", "Venecia",
       "Pisa", "Florencia", "Roma", "Madrid",
     ],
-    heroPlaceholder: { seed: "mama-paris-eiffel", label: "Foto real: mamá e hija frente a la Torre Eiffel" },
-    galleryPlaceholders: [
-      { seed: "mama-londres", label: "Foto real: Londres, Big Ben / London Eye" },
-      { seed: "mama-venecia", label: "Foto real: góndola en Venecia" },
-      { seed: "mama-roma", label: "Foto real: Coliseo Romano" },
-      { seed: "mama-fiesta", label: "Foto real: cena temática Palazzo Borghese" },
+    heroImage: "TR-12518 Descubre-Europa-con-Mamá-viaje-mama-portada.jpg",
+    galleryImages: [
+      "viaje-mama-galeria-01-londres.jpg",
+      "viaje-mama-galeria-02-venecia.jpg",
+      "viaje-mama-galeria-03-roma.jpg",
+      "viaje-mama-galeria-04-palazzo.jpg",
     ],
     summary:
       "El viaje pensado para vivir la despedida de la infancia acompañada de la persona más importante: mamá. Ocho países, ciudades ícono como Londres, París, Venecia y Roma, y una noche de gala exclusiva en un palacio italiano para celebrar los XV años como verdaderas princesas.",
@@ -119,12 +119,12 @@ export const trips: Trip[] = [
       "Monte Titlis", "Múnich", "Praga", "Budapest", "Bratislava", "Viena",
       "Venecia", "Verona", "Florencia", "Roma", "Barcelona", "Madrid",
     ],
-    heroPlaceholder: { seed: "grupo-praga", label: "Foto real: grupo de quinceañeras en Praga" },
-    galleryPlaceholders: [
-      { seed: "amsterdam-canales", label: "Foto real: canales de Ámsterdam" },
-      { seed: "budapest-danubio", label: "Foto real: crucero por el Danubio, Budapest" },
-      { seed: "viena-palacio", label: "Foto real: Palacio de Schönbrunn, Viena" },
-      { seed: "barcelona-sagrada-familia", label: "Foto real: Sagrada Familia, Barcelona" },
+    heroImage: "TR-12115 Quinceañeras-a-Europa-viaje-europa-portada.jpg",
+    galleryImages: [
+      "viaje-europa-galeria-01-amsterdam.jpg",
+      "viaje-europa-galeria-02-budapest.jpg",
+      "viaje-europa-galeria-03-viena.jpg",
+      "viaje-europa-galeria-04-barcelona.jpg",
     ],
     summary:
       "El itinerario insignia de Travelium: 26 días, 12 países y 19 ciudades, desde los canales de Ámsterdam hasta el Camp Nou de Barcelona. Incluye 3 chaperonas especializadas en grupos de menores, la cena de gala en el Palazzo Borghese y las entradas a los parques y estadios más buscados por las quinceañeras.",
@@ -227,12 +227,12 @@ export const trips: Trip[] = [
       "Estrasburgo", "Zúrich", "Monte Titlis", "Milán", "Verona", "Venecia", "Pisa",
       "Florencia", "Roma", "Madrid",
     ],
-    heroPlaceholder: { seed: "amigas-venecia-gondola", label: "Foto real: grupo de amigas en góndola, Venecia" },
-    galleryPlaceholders: [
-      { seed: "grupo-disney-paris", label: "Foto real: grupo en Disneyland París" },
-      { seed: "grupo-selfie-milan", label: "Foto real: selfie grupal en Milán" },
-      { seed: "grupo-europa-park", label: "Foto real: montaña rusa en Europa Park" },
-      { seed: "grupo-madrid-warner", label: "Foto real: Parque Warner Madrid" },
+    heroImage: "TR-12118 Quinceañeras-a-Europa-II-viaje-europa2-portada.jpg",
+    galleryImages: [
+      "viaje-europa2-galeria-01-disney.jpg",
+      "viaje-europa2-galeria-02-milan.jpg",
+      "viaje-europa2-galeria-03-europapark.jpg",
+      "viaje-europa2-galeria-04-madrid.jpg",
     ],
     summary:
       "La misma ruta ícono por 8 países que enamora a las quinceañeras, pensada para viajar en grupo con amigas: 3 chaperonas con experiencia en grupos de menores, convivencia todos los días y la fiesta de máscaras venecianas en el Palazzo Borghese como cierre inolvidable.",

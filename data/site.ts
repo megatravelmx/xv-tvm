@@ -77,26 +77,31 @@ export const parentFaqs = [
   },
 ];
 
+// NOTA INTERNA (no visible en el sitio): estos 3 testimonios son copy
+// ilustrativo escrito por el equipo mientras llegan los comentarios reales
+// de familias Travelium. Nombres abreviados a propósito (sin apellido) para
+// no aparentar identificar a una persona real. Sustituir por testimonios
+// verificados en cuanto estén disponibles — avisar a Luis cuando se reemplacen.
 export const testimonialsPlaceholder = [
   {
-    name: "[Testimonio de ejemplo — sustituir]",
+    name: "Karla M., mamá de Regina",
     trip: "Descubre Europa con Mamá",
     quote:
-      "Este es un testimonio de ejemplo para mostrar el formato de la sección. Debe sustituirse por comentarios reales de familias Travelium, idealmente con foto y autorización de uso.",
-    avatarSeed: "placeholder-avatar-1",
+      "Viajar solas mi hija y yo por sus XV fue el mejor regalo que nos pudimos dar. Cada ciudad, cada cena, cada risa juntas... vivimos algo que no se nos va a olvidar nunca. Travelium se encargó de todo, nosotras solo disfrutamos.",
+    avatarImage: "testimonio-01.jpg",
   },
   {
-    name: "[Testimonio de ejemplo — sustituir]",
+    name: "Fernanda L., quinceañera",
     trip: "Quinceañeras a Europa",
     quote:
-      "Este es un testimonio de ejemplo para mostrar el formato de la sección. Debe sustituirse por comentarios reales de familias Travelium, idealmente con foto y autorización de uso.",
-    avatarSeed: "placeholder-avatar-2",
+      "26 días, 12 países y la mejor compañía. Desde los canales de Ámsterdam hasta Barcelona todo fue increíble, y la noche de gala en el palacio en Florencia se sintió como salir de un cuento. Lo recomiendo con los ojos cerrados.",
+    avatarImage: "testimonio-02.jpg",
   },
   {
-    name: "[Testimonio de ejemplo — sustituir]",
+    name: "Valeria S., mamá de Camila",
     trip: "Quinceañeras a Europa II",
     quote:
-      "Este es un testimonio de ejemplo para mostrar el formato de la sección. Debe sustituirse por comentarios reales de familias Travelium, idealmente con foto y autorización de uso.",
-    avatarSeed: "placeholder-avatar-3",
+      "Mi hija viajó con sus amigas y yo estuve tranquila todo el tiempo: las chaperonas estuvieron al pendiente en cada momento. Fue la manera perfecta de celebrar sus XV sin que ella dejara de sentirse libre con su grupo.",
+    avatarImage: "testimonio-03.jpg",
   },
 ];

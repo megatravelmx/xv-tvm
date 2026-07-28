@@ -1,7 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Trip } from "@/data/types";
-import PlaceholderImage from "./PlaceholderImage";
 import { flagFromCountryName } from "@/lib/countryFlags";
+import { cdnImage } from "@/lib/cdn";
 
 export default function TripCard({ trip }: { trip: Trip }) {
   return (
@@ -9,12 +10,13 @@ export default function TripCard({ trip }: { trip: Trip }) {
       href={`/viajes/${trip.slug}`}
       className="group flex flex-col overflow-hidden rounded-3xl border border-rose-100 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-glow"
     >
-      <div className="relative">
-        <PlaceholderImage
-          seed={trip.heroPlaceholder.seed}
-          label={trip.heroPlaceholder.label}
-          aspect="aspect-[4/3]"
-          className="rounded-none"
+      <div className="relative aspect-[4/3] overflow-hidden">
+        <Image
+          src={cdnImage(trip.heroImage, { width: 800, height: 600 })}
+          alt={trip.name}
+          fill
+          sizes="(max-width: 768px) 100vw, 50vw"
+          className="object-cover"
         />
         <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-navy-950 backdrop-blur">
           {trip.code}
